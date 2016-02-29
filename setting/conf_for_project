@@ -1,0 +1,35 @@
+--build=i386 --host=armv5l-linux --prefix=/SDL/lib --enable-shared --disable-static --disable-input-events --enable-video-fbcon --disable-qtopia --disable-video-python --disable-video-direct --disable-video-ggi --disable-video-svga --disable-video-aalib --disable-video-dumy --disable-video-dga --disable-arts --disable-esd --disable-alsa --disable-video-x11 --disable-nasm --disable-debug --disable-joystic-amigaos --disable-joystick-beos --disable-joystick-bsd --disable-joystic --disable-joystick-dc --disable-joystick-linux --disable-joystick-macos --disable-joystick-mint --disable-joystick-win32
+
+
+copy header files to /usr/local/include/SDL   
+
+cp /SDL/lib/lib/* /usr/local/arm-2010q1/bin/
+
+
+
+
+********************************
+in kernel directory, 
+acrh/arm/mach-s3c2416/mach-mds2450.c  
+
+add 
+
+362:    &s3c_device_timer[2],
+
+*******************************
+
+
+
+in kernel direcotry,
+arch/arm/plat-s5p/s5p-time.c
+
+case S5P_PWM2 :
+
+  add 
+  tcon |= S3C2410_TCON_T2INVERT;
+
+
+
+
+
+

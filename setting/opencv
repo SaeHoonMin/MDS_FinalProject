@@ -1,0 +1,17 @@
+sudo apt-get install build-essential cmake git g++-arm-linux-gnueabi gcc-arm-linux-gnueabi g++-arm-linux-gnueabihf cmake-curses-gui libpng12-dev libjpeg62-dev  libtiff4-dev zlib1g-dev autoconf automake libtool autotools-dev
+
+
+set ( CMAKE_SYSTEM_NAME Linux )
+set ( CMAKE_SYSTEM_PROCESSOR arm )
+set ( CMAKE_C_COMPILER arm-none-linux-gnueabi-gcc )
+set ( CMAKE_CXX_COMPILER arm-none-linux-gnueabi-g++ )
+set ( CMAKE_INSTALL_PREFIX "/root/down/opencv-2.4.9" )
+
+
+
+
+cmake -D CMAKE_TOOLCHAIN_FILE=toolchain_arm.cmake -D BUILD_SHARED_LIBS=0 -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/root/down/opencv-2.4.9static -D WITH_CUDA=OFF -D WITH_CUBLAS=OFF -D WITH_EIGEN=ON -D WITH_FFMPEG=OFF -D WITH_GSTREAMER=OFF -D WITH_GTK=OFF -D WITH_JASPER=ON -D WITH_JPEG=ON -D WITH_PNG=ON -D WITH_OPENEXR=OFF -D WITH_OPENGL=OFF -D WITH_TIFF=OFF -D WITH_PVAPI=ON -D WITH_V4L=ON -D BUILD_JPEG=ON -D BUILD_ZLIB=ON -D BUILD_JASPER=ON -D BUILD_PNG=ON -D BUILD_opencv_python=OFF /root/down/opencv-2.4.9/
+
+
+
+arm-none-linux-gnueabi-g++ -static Number_detection_main.cpp -o test -I /root/down/opencv-2.4.9/include -L /root/down/opencv-2.4.9/share/OpenCV/3rdparty/lib -L /root/down/opencv-2.4.9/lib/ -lopencv_contrib -lopencv_legacy -lopencv_ml -lopencv_stitching -lopencv_nonfree -lopencv_objdetect -opencv_ts -lopencv_videostab -lopencv_calib3d -lopencv_photo -lopencv_video -lopencv_features2d -lopencv_highgui -llibjasper -llibpng -llibjpeg -lopencv_imgproc -lopencv_core -lzlib -lrt -pthread -ldl -lstdc++
